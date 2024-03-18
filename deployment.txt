@@ -1,0 +1,20 @@
+piVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jeff
+spec:
+ replicas: 1
+ selector:
+    matchLabels:
+        app: flask-app-pod
+ template:
+    metadata:
+      labels:
+        app: flask-app-pod
+    spec:
+      containers:
+      - name: flask-app-pod-image
+        image: jimenezj12/jeff:v2
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5000
